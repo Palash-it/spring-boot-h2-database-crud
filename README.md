@@ -2,7 +2,7 @@
 * Simple CRUD Application using Spring Boot + H2 Database
 * Author : palash.debnath5@gmail.com
 * Position: Software Developer - Full Stack
-* Purpose : Learning Usage of H2 Database
+* Purpose : Learn Usage of H2 Database
 *
 */
 
