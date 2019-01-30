@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<head th:include="fragments/head :: head" th:remove="tag"/>
+	</head>
+	<body>
+		<section th:include="fragments/header::header" th:remove="tag"></section>
+		<div class="container">
+				<div class="col-md-12" th:if="${status != null}">
+					<p class="alert " th:classappend="${status=='error' ? 'alert-danger' : 'alert-success'}" th:text="${message}"></p>
+				</div>
+				<div class="col-md-12">
+					<div class="box">
+						<table class="table table-bordered table-striped table-hover">
+							<thead>
+								<tr>
+									<td>Student Name</td>
+									<td>Roll</td>
+									<td>Department</td>
+									<td>Action</td>
+								</tr>
+							</thead>
+							<tbody th:if="${studentList != null}">
+								<tr th:each="student : ${studentList}">
+									<td th:text="${student.name}"></td>
+									<td th:text="${student.roll}"></td>
+									<td th:text="${student.department.departmentName}"></td>
+									<td>
+										<a th:href="@{${'edit/'+student.studentId}}"><i class="fa fa-edit"></i></a>&nbsp;
+										<a th:href="@{${'delete/'+student.studentId}}"><i class="fa fa-trash"></i></a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+		</div>
+		<div class="row">
+			<footer th:include="fragments/footer::footer" th:remove="tag"/></footer>
+		</div>
+	</body>
+</html>

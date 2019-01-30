@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<head th:include="fragments/head :: head" th:remove="tag"/>
+	</head>
+	<body>
+		<section th:include="fragments/header::header" th:remove="tag"></section>
+		<div class="container">
+				<div class="col-md-12">
+					<div class="box">
+						<div class="col-md-12" th:if="${status != null}">
+							<p class="alert " th:classappend="${status=='error' ? 'alert-danger' : 'alert-success'}" th:text="${message}"></p>
+						</div>
+						<form class="form-horizontal" action="/students/add" name="" method="post">
+							<div class="form-group row">
+								<label class="control-label col-md-3">Student Name</label>
+								<div class="col-md-5">
+									<input name="name" value="" type="text" class="form-contol input" required="required"/>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="control-label col-md-3">Student Roll</label>
+								<div class="col-md-5">
+									<input name="roll" value="" type="text" class="form-contol input"/>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="control-label col-md-3">Department</label>
+								<div class="col-md-5">
+									<select name="department.departmentId" class="form-contol select" required="required">
+											<option value="">Select</option>
+											<option th:each="dept : ${departmentsList}" th:value="${dept.departmentId}">
+												<span th:text="${dept.departmentName}"></span>
+											</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="control-label col-md-3">Gender</label>
+								<div class="col-md-5">
+									<input name="gender" type="radio" value="male" checked="checked"/> Male
+									<input name="gender" type="radio" value="female"/> Female
+								</div>
+							</div>
+							
+							<div class="form-group row">
+								<label class="control-label col-md-3">Student Roll</label>
+								<div class="col-md-5">
+									<input type="submit" value="ADD" class="btn btn-primary" />
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+		</div>
+		<div class="row">
+			<footer th:include="fragments/footer::footer" th:remove="tag"/></footer>
+		</div>
+	</body>
+</html>
